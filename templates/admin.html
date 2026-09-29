@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Painel administrativo — Banco Ipê</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('static', filename='admin.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='base.css')}}">
+
+</head>
+<body>
+<div id="app"></div>
+
+<dialog id="dialogo" aria-labelledby="dialogo-titulo">
+  <form id="form-cadastro" novalidate>
+    <h2 id="dialogo-titulo">Abrir conta</h2>
+    <p class="texto-dialogo" id="dialogo-texto"></p>
+    <label class="campo">Nome completo
+      <input name="nome" autocomplete="name">
+      <span class="erro" data-erro="nome"></span>
+    </label>
+    <label class="campo">Cidade
+      <input name="cidade" autocomplete="address-level2">
+    </label>
+    <label class="campo">Depósito inicial (opcional)
+      <input name="deposito" inputmode="decimal" placeholder="0,00">
+      <span class="erro" data-erro="deposito"></span>
+    </label>
+    <div class="dialogo-acoes">
+      <button type="button" class="botao secundario" data-acao="fechar-dialogo">Cancelar</button>
+      <button type="submit" class="botao primario" id="dialogo-enviar">Abrir conta</button>
+    </div>
+  </form>
+</dialog>
+<div id="aviso" role="status" aria-live="polite"></div>
+
+<script src="{{ url_for('static', filename='js/comum.js') }}"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

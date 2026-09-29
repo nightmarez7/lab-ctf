@@ -1,0 +1,78 @@
+/* Base compartilhada: cores, tipografia, botões, marca, guilhochê, formulários, diálogo e aviso */
+
+:root{
+  --papel:#EAF0EC; --superficie:#F9FCFA; --tinta:#10261F; --tinta-suave:#4B6158; --linha:#CBD8D1;
+  --cedula:#1E5B45; --cedula-forte:#154232; --sobre-cedula:#F2F8F4; --ipe:#F0B429; --sobre-ipe:#10261F;
+  --alerta:#B23A2E; --ok:#1E7A55; --aviso:#8A5E00; --apoio:#2F6F8F; --foco:#154232;
+  --fonte-titulo:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --fonte-texto:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#0B1713; --superficie:#12251E; --tinta:#E3EEE8; --tinta-suave:#9DB3A8; --linha:#264238;
+    --cedula:#49B48A; --cedula-forte:#7FD1AE; --sobre-cedula:#07160F; --ipe:#F2BC3A; --sobre-ipe:#10261F;
+    --alerta:#E27B6D; --ok:#5CC79B; --aviso:#E9B84E; --apoio:#6DB0D1; --foco:#F2BC3A;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#0B1713; --superficie:#12251E; --tinta:#E3EEE8; --tinta-suave:#9DB3A8; --linha:#264238;
+  --cedula:#49B48A; --cedula-forte:#7FD1AE; --sobre-cedula:#07160F; --ipe:#F2BC3A; --sobre-ipe:#10261F;
+  --alerta:#E27B6D; --ok:#5CC79B; --aviso:#E9B84E; --apoio:#6DB0D1; --foco:#F2BC3A;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 16px/1.55 var(--fonte-texto)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--fonte-titulo);line-height:1.08;letter-spacing:-.02em;font-weight:700}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--foco);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+.container{max-width:1160px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* botões */
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:8px;border:1px solid transparent;font-weight:600;text-decoration:none;white-space:nowrap}
+.botao.primario{background:var(--cedula);color:var(--sobre-cedula)}
+.botao.primario:hover{background:var(--cedula-forte);color:var(--sobre-cedula)}
+.botao.secundario{background:transparent;border-color:var(--linha);color:var(--tinta)}
+.botao.secundario:hover{border-color:var(--tinta-suave)}
+.botao.pequeno{min-height:34px;padding:0 12px;font-size:.875rem}
+.botao.perigo{border-color:color-mix(in srgb,var(--alerta) 50%,transparent);color:var(--alerta);background:transparent}
+.botao.perigo:hover{background:color-mix(in srgb,var(--alerta) 12%,transparent)}
+.botao-texto{display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:10px 12px;border-radius:8px;color:var(--tinta-suave);width:100%;text-align:left}
+.botao-texto:hover{background:color-mix(in srgb,var(--tinta) 6%,transparent);color:var(--tinta)}
+.icone svg,svg.icone{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* marca */
+.marca{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--fonte-titulo);font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
+.marca svg{width:34px;height:34px}
+
+/* guilhochê */
+.guilhoche path{fill:none;stroke-width:var(--largura,.7);stroke-linejoin:round}
+.guilhoche.animado path{stroke-dasharray:1;stroke-dashoffset:1;animation:desenhar 2.8s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:calc(var(--i) * .24s)}
+@keyframes desenhar{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){
+  .guilhoche.animado path{animation:none;stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+
+/* formulários */
+.campo{display:grid;gap:6px;font-weight:500}
+.campo input,.campo select,.busca input,.filtros select{min-height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--linha);background:var(--superficie);width:100%}
+.campo .erro{color:var(--alerta);font-size:.8125rem;font-weight:400;min-height:0}
+
+/* diálogo e aviso */
+dialog{border:1px solid var(--linha);border-radius:14px;background:var(--superficie);color:var(--tinta);padding:0;width:min(440px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(6,20,15,.55)}
+dialog form{padding:24px;display:grid;gap:16px}
+dialog h2{font-size:1.5rem}
+dialog .texto-dialogo{color:var(--tinta-suave);margin-top:-8px}
+.dialogo-acoes{display:flex;justify-content:flex-end;gap:10px;margin-top:4px}
+#aviso{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--tinta);color:var(--papel);padding:12px 18px;border-radius:10px;font-weight:500;z-index:60;max-width:calc(100vw - 32px);transition:opacity .2s,transform .2s}
+#aviso.visivel{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion: reduce){ #aviso{transition:none} }

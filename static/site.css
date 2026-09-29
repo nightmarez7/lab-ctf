@@ -1,0 +1,74 @@
+/* Só do site público (/) */
+/* site: cabeçalho */
+.cabecalho{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--papel) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.cabecalho .container{display:flex;align-items:center;gap:28px;min-height:66px}
+.nav-site{display:flex;gap:22px;margin-right:auto}
+.nav-site a{text-decoration:none;color:var(--tinta-suave);font-weight:500}
+.nav-site a:hover{color:var(--tinta)}
+.cabecalho-acoes{display:flex;gap:10px;margin-left:auto}
+.nav-site + .cabecalho-acoes{margin-left:0}
+
+/* site: herói */
+.heroi{padding:56px 0 80px;overflow:hidden}
+.heroi .container{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.heroi h1{font-size:clamp(2.5rem,5.8vw,4.5rem);font-weight:800;max-width:14ch}
+.heroi .texto{max-width:46ch;margin-top:22px;font-size:1.125rem;color:var(--tinta-suave)}
+.heroi .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.vitrine{position:relative;justify-self:end;width:100%;max-width:540px}
+.vitrine .guilhoche{width:100%;height:auto;display:block}
+.extrato-mini{position:absolute;left:-6%;bottom:6%;width:min(300px,68%);background:var(--superficie);border:1px solid var(--linha);border-radius:12px;padding:14px 16px}
+.extrato-mini p{font-family:var(--fonte-titulo);font-weight:700;margin-bottom:8px}
+.extrato-mini ul{list-style:none;margin:0;padding:0;font-size:.875rem}
+.extrato-mini li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dotted var(--linha)}
+.extrato-mini li:last-child{border-bottom:0;font-weight:600;padding-top:9px}
+.pos{color:var(--ok)}
+@media (max-width:860px){
+  .heroi{padding:36px 0 56px}
+  .heroi .container{grid-template-columns:1fr}
+  .vitrine{justify-self:center;max-width:380px;margin-top:12px}
+  .extrato-mini{left:0;bottom:-8%}
+  .nav-site{display:none}
+  .cabecalho-acoes{margin-left:auto}
+}
+
+/* site: seções */
+.secao{padding:72px 0;border-top:1px solid var(--linha)}
+.secao h2{font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:18ch}
+.secao .apoio{color:var(--tinta-suave);margin-top:14px;max-width:44ch}
+.tarifas{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px}
+.tarifas .esq{align-self:start;position:sticky;top:96px}
+.tarifa{display:flex;align-items:baseline;gap:12px;padding:20px 0;border-bottom:1px solid var(--linha)}
+.tarifa:first-child{padding-top:0}
+.tarifa h3{font-size:1.3rem;white-space:nowrap}
+.tarifa .fio{flex:1;border-bottom:2px dotted var(--linha);transform:translateY(-4px);min-width:16px}
+.tarifa .preco{font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.tarifa .detalhe{flex-basis:100%;order:5;color:var(--tinta-suave);margin-top:-4px}
+.tarifa{flex-wrap:wrap}
+@media (max-width:820px){
+  .tarifas{grid-template-columns:1fr;gap:28px}
+  .tarifas .esq{position:static}
+  .secao{padding:52px 0}
+}
+.simulador{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+.recibo{background:var(--superficie);border:1px solid var(--linha);border-radius:14px;padding:26px}
+.recibo label{display:block;font-weight:500}
+.recibo label + label{margin-top:22px}
+.recibo .linha-controle{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+.recibo output{font-family:var(--fonte-titulo);font-weight:700;font-size:1.4rem;font-variant-numeric:tabular-nums}
+.recibo input[type=range]{width:100%;accent-color:var(--cedula);min-height:28px}
+.recibo dl{margin:26px 0 0;border-top:2px dashed var(--linha);padding-top:18px;display:grid;gap:10px}
+.recibo dl div{display:flex;justify-content:space-between;gap:12px}
+.recibo dt{color:var(--tinta-suave)}
+.recibo dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.recibo dl .destaque dd{font-family:var(--fonte-titulo);font-size:1.6rem}
+.recibo .nota{margin-top:16px;font-size:.8125rem;color:var(--tinta-suave)}
+@media (max-width:820px){ .simulador{grid-template-columns:1fr;gap:28px} }
+.seguranca-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:36px}
+.seguranca-grade > div{border-top:3px solid var(--cedula);padding-top:16px}
+.seguranca-grade h3{font-size:1.25rem;margin-bottom:8px}
+.seguranca-grade p{color:var(--tinta-suave)}
+@media (max-width:820px){ .seguranca-grade{grid-template-columns:1fr;gap:24px} }
+.rodape{padding:36px 0 48px;border-top:1px solid var(--linha);color:var(--tinta-suave);font-size:.875rem}
+.rodape .container{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.rodape p{max-width:62ch}
+
